@@ -193,7 +193,6 @@ function getInfo(id, i) {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    $(".column").empty();
     var div = createCard(response.drinks[0]);
 
     $($(".column")[i % 2]).append(div);
