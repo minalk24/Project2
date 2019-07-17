@@ -36,10 +36,12 @@ body {
   background-color: #240935;
   color: #ffe4c4;
   font-weight: bold;
+  margin-bottom: 100px;
 }
 .sidenav {
   background-color: rgba(0, 56, 65, 0.7);
   padding: 10px 60px;
+  overflow-y: scroll;
 }
 .btn {
   background-color: #ffe4c4;
@@ -111,9 +113,9 @@ body {
 .popUp {
   position: fixed;
 
-  height: 40%;
-  width: 40%;
-  left: 35%;
+  height: 35%;
+  width: 35%;
+  left: 33%;
   top: 20%;
   border-radius: 10px;
 }

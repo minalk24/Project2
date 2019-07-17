@@ -33,7 +33,6 @@ var nonAlcoholic = [
   "cream",
   "milk",
   "grenadine",
-  "red_wine",
   "grapefruit_juice",
   "apple_juice",
   "orange_juice",
@@ -59,7 +58,7 @@ function createInput(array, name) {
 }
 function searchByName(event) {
   event.preventDefault();
-
+  debugger;
   var usersInput = $("#usersInputName")
     .val()
     .trim()
@@ -73,6 +72,8 @@ function searchByName(event) {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
+    debugger;
+    $("#usersInputName").val("");
     $(".column").empty();
     console.log(response);
     var drinks = response.drinks;
@@ -82,9 +83,11 @@ function searchByName(event) {
         .attr("src", "../assets/images/sad-cartoon-margarita.png")
         .css({ width: "50%", clear: "both" });
       $("#col1")
-        .empty()
         .html("<h4>None Found</h4>")
         .append(img);
+
+      var coctailsList = document.getElementById("coctailsList");
+      coctailsList.scrollIntoView(true);
     } else {
       for (var i = 0; i < drinks.length; i++) {
         var div = createCard(drinks[i]);
@@ -92,7 +95,6 @@ function searchByName(event) {
         $($(".column")[i % 2]).append(div);
       }
       var coctailsList = document.getElementById("coctailsList");
-
       coctailsList.scrollIntoView(true);
     }
   });
@@ -164,7 +166,7 @@ function showRandom() {
     $(".searchBar").hide();
     $(".carousel").hide();
 
-    $(".coctailsList").empty();
+    $(".column").empty();
     $(".popUp")
       .empty()
       .show()
@@ -191,6 +193,7 @@ function getInfo(id, i) {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
+    $(".column").empty();
     var div = createCard(response.drinks[0]);
 
     $($(".column")[i % 2]).append(div);
@@ -220,6 +223,9 @@ function searchByIngredients(event) {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
+    $(".column").empty();
+    instance = M.Sidenav.getInstance(document.getElementById("slide-out"));
+    instance.close();
     debugger;
     var drinks = response.drinks;
     if (drinks == "None Found") {
@@ -227,9 +233,10 @@ function searchByIngredients(event) {
         .attr("src", "../assets/images/sad-cartoon-margarita.png")
         .css({ width: "50%", clear: "both" });
       $("#col1")
-        .empty()
         .html("<h4>None Found</h4>")
         .append(img);
+      var coctailsList = document.getElementById("coctailsList");
+      coctailsList.scrollIntoView(true);
     } else {
       for (var i = 0; i < drinks.length; i++) {
         var id = drinks[i].idDrink;
@@ -239,17 +246,18 @@ function searchByIngredients(event) {
   });
 }
 
-function getPref() {
-  $.get("/api/users/:" + id, function(data) {
-    console.log("id", data);
-    data = data;
-  });
-}
+// function getPref() {
+//   $.get("/api/pref?user_id=" + id, function(data) {
+//     console.log("id", data);
+//     prefs = data.;
+//     console.log(data);
+//   });
+// }
 
 function displayCarousel() {
   //debugger;
   //var prefs = getPref();
-  var prefs = ["whiskey", "Triple sec", "campari"];
+  var prefs = ["Jagermeister", "grapefruit juice", "banana"];
 
   for (var j = 0; j < prefs.length; j++) {
     var queryURL =
