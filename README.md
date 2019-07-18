@@ -1,17 +1,17 @@
 ## Shocktail
 
-[Launch the application from the Heroku website!](https://vast-wave-25952.herokuapp.com/)
+[Launch the application from the Heroku website!](https://shocktail.herokuapp.com/)
 
 ## Screenshots of the Website
 
 ### User Signed-In
-![New Screenshot](public/assets/readme-images/signin.png)
+![Signin](public/assets/readme-images/signin.png)
 
 ### Preference Page
-![New Screenshot](public/assets/readme-images/pref.png)
+![Preference](public/assets/readme-images/pref.png)
 ​
 ### Main Page
-![New Screenshot](public/assets/readme-images/main.png)
+![Main](public/assets/readme-images/main.png)
 
 ## Description
 
